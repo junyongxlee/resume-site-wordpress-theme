@@ -21,6 +21,22 @@
 		?>
 	</header><!-- .entry-header -->
 
+	<?php
+	$tldr = get_post_meta(get_the_ID(), 'tldr', true);
+
+	if ($tldr) :
+	?>
+		<div class="tldr-section">
+			<p>
+				<span class="fw-bold me-1">TL;DR</span>
+				<?php
+				echo $tldr;
+				?>
+			</p>
+		</div>
+	<?php
+	endif;
+	?>
 
 	<?php
 	junyong_post_thumbnail(); ?>
