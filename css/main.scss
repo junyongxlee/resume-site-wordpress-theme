@@ -1,0 +1,366 @@
+// Custom.scss
+// Option A: Include all of Bootstrap
+
+// Include any default variable overrides here (though functions won't be available)
+
+
+@import "./bootstrap-5.0.2/scss/bootstrap";
+
+body {
+    font-family: 'Montserrat', sans-serif !important;
+
+
+    h1 {
+        font-weight: 800 !important;
+    }
+}
+
+.navbar {
+    border-bottom: 1px solid #DEE2E6;
+
+    .navbar-brand {
+        font-weight: bold;
+    }
+
+    .active {
+        font-weight: 600;
+    }
+
+
+
+    // --- Underline below nav item when on hover or active --- //
+    .nav-item {
+        display: inline-block;
+        padding-bottom: 5px;
+        position: relative;
+    }
+
+    .nav-item:before {
+        transform: scaleX(0);
+        transition: transform 100ms ease-in-out;
+        content: "";
+        position: absolute;
+        width: 30%;
+        height: 1px;
+        bottom: 0;
+        left: 35%;
+        border-bottom: 2px solid black;
+    }
+
+    .nav-item:hover:before {
+        transform: scaleX(1);
+    }
+
+    .active.nav-item:before {
+        transform: scaleX(1);
+    }
+
+    @media only screen and (max-width: 991px) {
+        .nav-item:before {
+            display: none;
+        }
+
+        .active.nav-item:after {
+            content: "   <";
+        }
+    }
+
+    // --- END --- //
+}
+
+
+// This is to move the section down so that header won't block the section
+.section {
+    padding-top: 70px !important;
+}
+
+#home {
+    .image {
+        padding-top: ($spacer * 5) !important;
+    }
+}
+
+#education {
+    .card-title {
+        margin-bottom: 0.1rem;
+    }
+
+    .school {
+        margin-bottom: 0.1rem;
+    }
+}
+
+#projects {
+    perspective: 2000px;
+
+    .project-cards {
+        min-height: 375px;
+    }
+
+    @media only screen and (max-width: 991px) {
+        .project-cards {
+            min-height: 100%;
+        }
+    }
+
+
+    .card {
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        img {
+            height: auto;
+            max-width: 100%;
+        }
+    }
+
+    .card-title {
+        font-weight: bold !important;
+    }
+
+    .card-text {
+        font-size: 0.8rem !important;
+    }
+
+    .pagination {
+        .page-item {
+            cursor: pointer;
+        }
+    }
+
+    .flip-in-ver-right {
+        -webkit-animation: flip-in-ver-right 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation: flip-in-ver-right 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+
+    @-webkit-keyframes flip-in-ver-right {
+        0% {
+            -webkit-transform: rotateY(-80deg);
+            transform: rotateY(-80deg);
+            opacity: 0;
+        }
+
+        100% {
+            -webkit-transform: rotateY(0);
+            transform: rotateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes flip-in-ver-right {
+        0% {
+            -webkit-transform: rotateY(-80deg);
+            transform: rotateY(-80deg);
+            opacity: 0;
+        }
+
+        100% {
+            -webkit-transform: rotateY(0);
+            transform: rotateY(0);
+            opacity: 1;
+        }
+    }
+
+    .flip-out-ver-right {
+        -webkit-animation: flip-out-ver-right 0.3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+        animation: flip-out-ver-right 0.3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    }
+
+    @-webkit-keyframes flip-out-ver-right {
+        0% {
+            -webkit-transform: rotateY(0);
+            transform: rotateY(0);
+            opacity: 1;
+        }
+
+        100% {
+            -webkit-transform: rotateY(70deg);
+            transform: rotateY(70deg);
+            opacity: 0;
+        }
+    }
+
+    @keyframes flip-out-ver-right {
+        0% {
+            -webkit-transform: rotateY(0);
+            transform: rotateY(0);
+            opacity: 1;
+        }
+
+        100% {
+            -webkit-transform: rotateY(70deg);
+            transform: rotateY(70deg);
+            opacity: 0;
+        }
+    }
+
+
+
+
+}
+
+#aboutme {
+    #im-a-text {
+        display: inline-block;
+        font-weight: 400 !important;
+    }
+
+    .wrapper {
+        display: flex;
+        height: 2.5rem;
+
+        .words {
+            display: inline-block;
+            overflow: hidden;
+
+            span {
+                h2 {
+                    display: block;
+                    margin: 0;
+                    padding-left: 1rem;
+                    padding-bottom: 2rem;
+                    animation: spin_words 5s infinite;
+                    font-weight: 600 !important;
+                }
+
+            }
+
+            @keyframes spin_words {
+                9% {
+                    transform: translateY(-110%);
+                }
+
+                17% {
+                    transform: translateY(-100%);
+                }
+
+                20% {
+                    transform: translateY(-100%);
+                }
+
+                29% {
+                    transform: translateY(-210%);
+                }
+
+                37% {
+                    transform: translateY(-200%);
+                }
+
+                40% {
+                    transform: translateY(-200%);
+                }
+
+                49% {
+                    transform: translateY(-310%);
+                }
+
+                57% {
+                    transform: translateY(-300%);
+                }
+
+                60% {
+                    transform: translateY(-300%);
+                }
+
+                69% {
+                    transform: translateY(-410%);
+                }
+
+                77% {
+                    transform: translateY(-400%);
+                }
+
+                80% {
+                    transform: translateY(-400%);
+                }
+
+                89% {
+                    transform: translateY(-510%);
+                }
+
+                97% {
+                    transform: translateY(-500%);
+                }
+
+                100% {
+                    transform: translateY(-500%);
+                }
+            }
+        }
+    }
+}
+
+.blog-post-content {
+    max-width: 750px;
+
+    img {
+        height: auto;
+        max-width: 100%;
+    }
+
+    p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+
+    .last-paragraph {
+        margin-bottom: 2.5rem;
+    }
+
+    .has-large-font-size {
+        font-size: 2rem;
+    }
+
+    .wp-block-separator {
+        max-width: 25%;
+        border-bottom: 2px solid;
+        opacity: .4;
+
+        display: block;
+        margin-inline-start: auto;
+        margin-inline-end: auto;
+        overflow: hidden;
+    }
+
+    .see-more-button-section {
+        p {
+            font-size: 1rem;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 991px) {
+    .blog-post-content {
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+
+        p {
+            font-size: 1rem;
+        }
+    }
+}
+
+#contact {
+    .icon {
+        fill: red;
+    }
+}
+
+.wpcf7-form-control-wrap {
+    display: contents;
+}
+
+.grecaptcha-badge {
+    visibility: hidden;
+}
+
+#recaptcha-text {
+    font-size: 0.8rem;
+}
+
+// Then add additional custom code here
