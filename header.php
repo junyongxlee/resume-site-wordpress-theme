@@ -20,6 +20,7 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<?php wp_head(); ?>
+
 </head>
 
 <body <?php body_class(); ?>>
@@ -34,6 +35,15 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+
+					<?php if (is_front_page()) : ?>
+						<div style="position: relative; width: 0; height: 0" class="d-none d-lg-block">
+							<div class="cute-ghost-icon">
+								<img src="<?php echo get_bloginfo('template_url') ?>/img/cute-ghost-icon.png" alt="cute-ghost-icon" />
+							</div>
+						</div>
+					<?php endif; ?>
+
 					<div class="navbar-nav ">
 						<a class="nav-item nav-link px-3" id="nav-item-home" href="<?php echo get_home_url() ?>#home">Home</a>
 						<a class="nav-item nav-link px-3" id="nav-item-projects" href="<?php echo get_home_url() ?>#projects">Projects</a>
