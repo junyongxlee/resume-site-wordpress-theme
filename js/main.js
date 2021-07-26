@@ -29,32 +29,33 @@ jQuery(document).ready(function ($) {
 
   //Move the ghost icon on scroll
   const $ghost = $(".cute-ghost-icon");
-  var widthToScroll = null;
-  var initialLeft = null;
+  const $navItemHome = $("#nav-item-home");
+  const $navItemContact = $("#nav-item-contact");
 
   const translateGhostX = () => {
-    const heightOfSite = $("body").height();
-    const transPerScroll = widthToScroll / heightOfSite;
+    var scrollTop = $(window).scrollTop();
+    var docHeight = $(document).height();
+    var winHeight = $(window).height();
+    var scrollPercent = scrollTop / (docHeight - winHeight);
+    var scrollPercentRounded = scrollPercent;
 
-    var st = $(this).scrollTop();
-    var newPos = st * transPerScroll + initialLeft;
+    const widthToScroll =
+      $(".navbar-nav").width() -
+      $ghost.width() -
+      parseInt($navItemContact.css("padding-right")) * 2;
+
+    var newPos =
+      scrollPercentRounded * widthToScroll +
+      parseInt($navItemHome.css("padding-left"));
 
     $ghost.css({
       left: newPos,
     });
+
+    console.log({ newPos, widthToScroll });
   };
 
-  const updateWidthToScroll = () => {
-    // widthToScroll = $(window).width() - $("#nav-item-home").offset().left + 10;
-    const $navItemContact = $("#nav-item-contact");
-    const $navItemHome = $("#nav-item-home");
-
-    initialLeft = parseInt($navItemHome.css("padding-left"));
-    widthToScroll = $(".navbar-nav").width() + $ghost.width();
-  };
-  updateWidthToScroll();
   translateGhostX();
 
   $(window).scroll(() => translateGhostX());
-  $(window).resize(() => updateWidthToScroll());
 });
