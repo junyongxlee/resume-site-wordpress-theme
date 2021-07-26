@@ -147,7 +147,7 @@ function junyong_scripts()
 {
 	// wp_enqueue_style( 'junyong-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_enqueue_style('junyong-main', get_template_directory_uri() . '/css/main.min.css');
-	wp_enqueue_style('junyong-test', get_template_directory_uri() . '/css/test.min.css');
+	// wp_enqueue_style('junyong-test', get_template_directory_uri() . '/css/test.min.css');
 	wp_style_add_data('junyong-style', 'rtl', 'replace');
 
 	//For the widget posts pagination
