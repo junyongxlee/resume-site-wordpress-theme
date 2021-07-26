@@ -28,20 +28,35 @@ jQuery(document).ready(function ($) {
   $(window).scroll(() => $(".navbar-collapse").collapse("hide"));
 
   //Move the ghost icon on scroll
-  var $ghost = $(".cute-ghost-icon");
-  const heightOfSite = $("body").height();
-  const widthToScroll = $(window).width() - $ghost.offset().left + 10;
-  const transPerScroll = widthToScroll / heightOfSite;
+  const $ghost = $(".cute-ghost-icon");
+  var widthToScroll = null;
+  var initialLeft = null;
 
   const translateGhostX = () => {
+    const heightOfSite = $("body").height();
+    const transPerScroll = widthToScroll / heightOfSite;
+
     var st = $(this).scrollTop();
-    var newPos = st * transPerScroll + 15;
+    var newPos = st * transPerScroll + initialLeft;
 
     $ghost.css({
       left: newPos,
     });
   };
 
+  const updateWidthToScroll = () => {
+    // widthToScroll = $(window).width() - $("#nav-item-home").offset().left + 10;
+    const $navItemContact = $("#nav-item-contact");
+    const $navItemHome = $("#nav-item-home");
+
+    initialLeft = parseInt($navItemHome.css("padding-left"));
+    widthToScroll = $(".navbar-nav").width() + $ghost.width();
+
+    console.log({ widthToScroll });
+  };
+  updateWidthToScroll();
   translateGhostX();
+
   $(window).scroll(() => translateGhostX());
+  $(window).resize(() => updateWidthToScroll());
 });
