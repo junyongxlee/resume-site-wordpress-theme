@@ -51,8 +51,6 @@ jQuery(document).ready(function ($) {
 
     initialLeft = parseInt($navItemHome.css("padding-left"));
     widthToScroll = $(".navbar-nav").width() + $ghost.width();
-
-    console.log({ widthToScroll });
   };
   updateWidthToScroll();
   translateGhostX();
